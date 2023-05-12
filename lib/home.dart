@@ -16,7 +16,7 @@ class _HomeState extends State<Home> {
   List<PuntoLugar> vPuntosL = [
     PuntoLugar(200, 600, 15, "1", Colors.yellowAccent),
     PuntoLugar(300, 500, 15, "2", Colors.yellowAccent),
-    PuntoLugar(100, 450, 15, "3", Colors.yellowAccent),
+    PuntoLugar(150, 400, 15, "3", Colors.yellowAccent),
   ];
 
   @override
@@ -33,12 +33,20 @@ class _HomeState extends State<Home> {
           backgroundColor: Colors.transparent,
 
           appBar: AppBar(
-            title: Text('Don Quijote de la Mancha'),
-            backgroundColor: Colors.black.withOpacity(0.7),
+            title: Text(
+              'Don Quijote \nde la Mancha',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 26,
+                fontFamily: 'Courier new', // Define la fuente del texto
+                fontWeight: FontWeight.bold, // Define el peso de la fuente
+              ),
+            ),
+            backgroundColor: Colors.black.withOpacity(0),
             centerTitle: true,
             elevation: 0,
             brightness: Brightness.dark,
-            iconTheme: IconThemeData(color: Colors.white),
+            iconTheme: IconThemeData(color: Colors.black),
             actions: [
               IconButton(
                 icon: Icon(Icons.settings),

@@ -14,6 +14,8 @@ class _Punto1State extends State<Punto1> {
   int numCaja2 = 1;
   int numCaja3 = 1;
 
+  int nivel = 1;
+
   @override
   Widget build(BuildContext context) {
     var screen = MediaQuery.of(context).size;
@@ -35,22 +37,23 @@ class _Punto1State extends State<Punto1> {
         body: SafeArea(
           child: Stack(
             children: [
-              Positioned(
-                top: 160, // define la posición en Y
-                left: 47, // define la posición en X
-                child: IconButton(
-                  icon: Icon(Icons.add_circle),
-                  onPressed: () {
-                    setState(() {
-                      numCaja += 1;
-                      if (numCaja > 3) {
-                        numCaja = 1;
-                      }
-                    });
-                  },
-                  iconSize: 20, // establecer el tamaño del icono a 40
+              if (nivel >= 1)
+                Positioned(
+                  top: 160, // define la posición en Y
+                  left: 47, // define la posición en X
+                  child: IconButton(
+                    icon: Icon(Icons.add_circle),
+                    onPressed: () {
+                      setState(() {
+                        numCaja += 1;
+                        if (numCaja > 3) {
+                          numCaja = 1;
+                        }
+                      });
+                    },
+                    iconSize: 20, // establecer el tamaño del icono a 40
+                  ),
                 ),
-              ),
               Positioned(
                 top: 280, // define la posición en Y
                 left: 47, // define la posición en X
@@ -91,6 +94,7 @@ class _Punto1State extends State<Punto1> {
                   ),
                 ),
               ),
+
               AnimatedPositioned(
                 duration: Duration(milliseconds: 500),
                 left: 30,
@@ -139,38 +143,41 @@ class _Punto1State extends State<Punto1> {
                   ),
                 ),
               ),
-              Positioned(
-                top: 380 - 50, // define la posición en Y
-                left: 47, // define la posición en X
-                child: IconButton(
-                  icon: Icon(Icons.add_circle),
-                  onPressed: () {
-                    setState(() {
-                      numCaja2 += 1;
-                      if (numCaja2 > 3) {
-                        numCaja2 = 1;
-                      }
-                    });
-                  },
-                  iconSize: 20, // establecer el tamaño del icono a 40
+
+              if (nivel >= 4)
+                Positioned(
+                  top: 380 - 50, // define la posición en Y
+                  left: 47, // define la posición en X
+                  child: IconButton(
+                    icon: Icon(Icons.add_circle),
+                    onPressed: () {
+                      setState(() {
+                        numCaja2 += 1;
+                        if (numCaja2 > 3) {
+                          numCaja2 = 1;
+                        }
+                      });
+                    },
+                    iconSize: 20, // establecer el tamaño del icono a 40
+                  ),
                 ),
-              ),
-              Positioned(
-                top: 500 - 50, // define la posición en Y
-                left: 47, // define la posición en X
-                child: IconButton(
-                  icon: Icon(Icons.remove_circle),
-                  onPressed: () {
-                    setState(() {
-                      numCaja2 -= 1;
-                      if (numCaja2 < 1) {
-                        numCaja2 = 3;
-                      }
-                    });
-                  },
-                  iconSize: 20, // establecer el tamaño del icono a 40
+              if (nivel >= 4)
+                Positioned(
+                  top: 500 - 50, // define la posición en Y
+                  left: 47, // define la posición en X
+                  child: IconButton(
+                    icon: Icon(Icons.remove_circle),
+                    onPressed: () {
+                      setState(() {
+                        numCaja2 -= 1;
+                        if (numCaja2 < 1) {
+                          numCaja2 = 3;
+                        }
+                      });
+                    },
+                    iconSize: 20, // establecer el tamaño del icono a 40
+                  ),
                 ),
-              ),
               AnimatedPositioned(
                 duration: Duration(milliseconds: 500),
                 left: 30,
@@ -243,38 +250,40 @@ class _Punto1State extends State<Punto1> {
                   ),
                 ),
               ),
-              Positioned(
-                top: 550 - 50, // define la posición en Y
-                left: 47, // define la posición en X
-                child: IconButton(
-                  icon: Icon(Icons.add_circle),
-                  onPressed: () {
-                    setState(() {
-                      numCaja3 += 1;
-                      if (numCaja3 > 3) {
-                        numCaja3 = 1;
-                      }
-                    });
-                  },
-                  iconSize: 20, // establecer el tamaño del icono a 40
+              if (nivel >= 8)
+                Positioned(
+                  top: 550 - 50, // define la posición en Y
+                  left: 47, // define la posición en X
+                  child: IconButton(
+                    icon: Icon(Icons.add_circle),
+                    onPressed: () {
+                      setState(() {
+                        numCaja3 += 1;
+                        if (numCaja3 > 3) {
+                          numCaja3 = 1;
+                        }
+                      });
+                    },
+                    iconSize: 20, // establecer el tamaño del icono a 40
+                  ),
                 ),
-              ),
-              Positioned(
-                top: 665 - 50, // define la posición en Y
-                left: 47, // define la posición en X
-                child: IconButton(
-                  icon: Icon(Icons.remove_circle),
-                  onPressed: () {
-                    setState(() {
-                      numCaja3 -= 1;
-                      if (numCaja3 < 1) {
-                        numCaja3 = 3;
-                      }
-                    });
-                  },
-                  iconSize: 20, // establecer el tamaño del icono a 40
+              if (nivel >= 8)
+                Positioned(
+                  top: 665 - 50, // define la posición en Y
+                  left: 47, // define la posición en X
+                  child: IconButton(
+                    icon: Icon(Icons.remove_circle),
+                    onPressed: () {
+                      setState(() {
+                        numCaja3 -= 1;
+                        if (numCaja3 < 1) {
+                          numCaja3 = 3;
+                        }
+                      });
+                    },
+                    iconSize: 20, // establecer el tamaño del icono a 40
+                  ),
                 ),
-              ),
               AnimatedPositioned(
                 duration: Duration(milliseconds: 500),
                 left: 30,
@@ -436,6 +445,27 @@ class _Punto1State extends State<Punto1> {
                   ),
                 ),
               ),
+
+              Positioned(
+                  top: 700 - 50, // define la posición en Y
+                  right: 50, // define la posición en X
+                  child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary:
+                            Colors.blue, // Define el color de fondo del botón
+                        onPrimary: Colors
+                            .white, // Define el color del texto dentro del botón
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          nivel++;
+                          if (nivel > 10) {
+                            Text("Nivel Completado");
+                            nivel = 1;
+                          }
+                        });
+                      },
+                      child: Text("Siguiente"))),
             ],
           ),
         ),
