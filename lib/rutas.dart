@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'home.dart';
 import 'paginas/tienda.dart';
 import 'puntos/punto1.dart';
+import 'login.dart';
+
 
 class Rutas extends StatefulWidget {
   const Rutas({Key? key}) : super(key: key);
@@ -19,6 +21,8 @@ class _RutasState extends State<Rutas> {
       onGenerateRoute: (RouteSettings settings) {
         switch (settings.name) {
           case '/':
+            return MaterialPageRoute(builder: (context) => LoginScreen());
+          case '/Home':
             return MaterialPageRoute(builder: (context) => Home());
           case '/Tienda':
             return MaterialPageRoute(builder: (context) => Tienda());
@@ -30,6 +34,7 @@ class _RutasState extends State<Rutas> {
           //return MaterialPageRoute(builder: (context) => Cuatro());
           case '/Cinco':
           //return MaterialPageRoute(builder: (context) => Cinco());
+
         }
       },
     );
