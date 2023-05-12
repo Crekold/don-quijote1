@@ -2,6 +2,59 @@ import 'package:flutter/material.dart';
 
 import 'PuntosLugar.dart';
 
+import 'modelos.dart';
+
+class Rectangulo extends CustomPainter {
+  List<Cuadpal> vPal = [];
+
+  Rectangulo(this.vPal);
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = Colors.blue.withOpacity(0.0)
+      ..style = PaintingStyle.fill;
+
+    final textStyle = TextStyle(
+      color: Color.fromARGB(255, 6, 147, 241),
+      fontSize: 20,
+    );
+
+    vPal.forEach((element) {
+      final textSpan = TextSpan(
+        text: element.msg,
+        style: textStyle,
+      );
+
+      final textPainter = TextPainter(
+        text: textSpan,
+        textAlign: TextAlign.center,
+        textDirection: TextDirection.ltr,
+      );
+
+      textPainter.layout();
+      final rect = Rect.fromCenter(
+        center: Offset(element.x, element.y - 105),
+        width: textPainter.width + 5,
+        height: 30,
+      );
+      element.w = textPainter.width + 5;
+
+      canvas.drawRect(rect, paint);
+      final textOffset = Offset(
+        element.x - textPainter.width / 2,
+        element.y - 110 + (13 - textPainter.height) / 2,
+      );
+      textPainter.paint(canvas, textOffset);
+    });
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return true; // Cambia a true si el cuadrado debe repintarse dinámicamente
+  }
+}
+
 class Punto extends CustomPainter {
   List<PuntoLugar> vPuntos;
 
